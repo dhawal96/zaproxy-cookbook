@@ -21,7 +21,7 @@ remote_file download_tar_path do
   checksum node[:zap][:checksum]
 end
 
-execute "untar ZAP" do
+execute 'untar ZAP' do
   command "tar zxf #{download_tar_path} \
           --transform 's/^ZAP_#{node[:zap][:version]}/zap-#{node[:zap][:version]}/' \
           -C /opt"
