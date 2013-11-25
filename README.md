@@ -50,12 +50,6 @@ Attributes
     <td><tt>2.2.2</tt></td>
   </tr>
   <tr>
-    <td><tt>['zaproxy']['version']</tt></td>
-    <td>String</td>
-    <td>Version to install</td>
-    <td><tt>2.2.2</tt></td>
-  </tr>
-  <tr>
     <td><tt>['zaproxy']['checksum']</tt></td>
     <td>String</td>
     <td>Checksum of the required version</td>

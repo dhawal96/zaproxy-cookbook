@@ -11,6 +11,5 @@ version          '0.1.0'
 supports 'ubuntu',    '>= 10.04'
 
 depends 'apt',              '~> 2.3'
-depends 'java',             '~> 1.14'
+depends 'java',             '~> 1.15.4'
 depends 'bluepill',         '~> 2.3'
-depends 'loco_xvfb',        '~> 0.3.0'

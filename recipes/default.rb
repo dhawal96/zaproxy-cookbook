@@ -21,12 +21,18 @@ remote_file download_tar_path do
   checksum node[:zap][:checksum]
 end
 
-execute "tar zxf #{download_tar_path} \
-        --transform 's/^ZAP_#{node[:zap][:version]}/zap-#{node[:zap][:version]}/' \
-        -C #{node[:zap][:working_dir]} && \
-        chown -R #{node[:zap][:user]}:#{node[:zap][:group]} \
-          #{node[:zap][:working_dir]}-#{node[:zap][:version]} && \
-        chmod -R u+rw  #{node[:zap][:working_dir]}-#{node[:zap][:version]}"
+execute "untar ZAP" do
+  command "tar zxf #{download_tar_path} \
+          --transform 's/^ZAP_#{node[:zap][:version]}/zap-#{node[:zap][:version]}/' \
+          -C /opt"
+end
+
+directory "#{node[:zap][:working_dir]}-#{node[:zap][:version]}" do
+  owner node[:zap][:user]
+  group node[:zap][:group]
+  mode 00755
+  recursive true
+end
 
 link node[:zap][:working_dir] do
   to "#{node[:zap][:working_dir]}-#{node[:zap][:version]}"
@@ -43,27 +49,13 @@ file "#{node[:zap][:config_dir]}/AcceptedLicense" do
   group node[:zap][:group]
 end
 
-template "#{node[:zap][:config_dir]}/config.xml" do
-  owner node[:zap][:user]
-  group node[:zap][:group]
-end
-
 include_recipe 'bluepill'
-include_recipe 'loco_xvfb'
 
 working_dir = node[:zap][:working_dir]
 directory working_dir do
   owner node[:zap][:user]
   group node[:zap][:group]
   recursive true
-  action :create
-end
-
-directory node[:bluepill][:conf_dir] do
-  owner 'root'
-  group 'root'
-  recursive true
-  action :create
 end
 
 template "#{node[:bluepill][:conf_dir]}/zaproxy.pill" do
