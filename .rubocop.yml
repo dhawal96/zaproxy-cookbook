@@ -1,0 +1,9 @@
+AllCops:
+  Includes:
+    - Rakefile
+    - test/**/*.rb
+  Excludes:
+    - vendor/**
+
+LineLength:
+  Max: 100

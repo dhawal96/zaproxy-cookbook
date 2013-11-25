@@ -1,0 +1,11 @@
+Bluepill.application("zaproxy") do |app|
+  app.working_dir = "<%= @working_dir %>"
+  app.uid = "zaproxy"
+  app.gid = "zaproxy"
+  app.process("zaproxy") do |process|
+    process.start_command = "zaproxy --start --quiet --exec /usr/bin/xvfb-run -- /opt/zaproxy/zap.sh"
+    process.pid_file = "<%= @working_dir %>/zaproxy.pid"
+    process.daemonize = true
+    process.stdout = process.stderr = "<%= @working_dir %>/zaproxy.log"
+  end
+end
