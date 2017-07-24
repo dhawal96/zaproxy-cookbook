@@ -7,7 +7,6 @@
 # Copyright (C) 2013 YOUR_NAME
 #
 # All rights reserved - Do Not Redistribute
-#https://zaproxy.googlecode.com/files/ZAP_#{node[:zap][:version]}_Linux.tar.gz
 
 include_recipe 'apt'
 include_recipe 'java'
