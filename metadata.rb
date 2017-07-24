@@ -11,5 +11,5 @@ version          '0.1.0'
 supports 'ubuntu',    '>= 10.04'
 
 depends 'java',             '~> 1.15.4'
-depends 'bluepill',         '~> 2.3'
+depends 'bluepill',         '~> 4.0.2'
 
