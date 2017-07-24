@@ -7,7 +7,7 @@
 # Copyright (C) 2013 YOUR_NAME
 #
 # All rights reserved - Do Not Redistribute
-#
+#https://zaproxy.googlecode.com/files/ZAP_#{node[:zap][:version]}_Linux.tar.gz
 
 include_recipe 'apt'
 include_recipe 'java'
@@ -17,7 +17,7 @@ user node[:zap][:user]
 download_tar_path = "#{Chef::Config['file_cache_path']}/zaproxy.tar.gz"
 
 remote_file download_tar_path do
-  source "https://zaproxy.googlecode.com/files/ZAP_#{node[:zap][:version]}_Linux.tar.gz"
+  source "https://github.com/zaproxy/zaproxy/releases/download/2.4.3/ZAP_2.4.3_Linux.tar.gz"
   checksum node[:zap][:checksum]
 end
 
