@@ -46,23 +46,3 @@ file "#{node[:zap][:config_dir]}/AcceptedLicense" do
   owner node[:zap][:user]
   group node[:zap][:group]
 end
-
-include_recipe 'bluepill'
-
-working_dir = node[:zap][:working_dir]
-directory working_dir do
-  owner node[:zap][:user]
-  group node[:zap][:group]
-  recursive true
-end
-
-template "#{node[:bluepill][:conf_dir]}/zaproxy.pill" do
-  variables(
-    working_dir: working_dir
-  )
-  notifies :reload, 'bluepill_service[zaproxy]', :delayed
-end
-
-bluepill_service 'zaproxy' do
-  action [:enable, :load, :start]
-end
