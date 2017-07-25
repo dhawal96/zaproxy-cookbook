@@ -15,7 +15,7 @@ user node[:zap][:user]
 download_tar_path = "#{Chef::Config['file_cache_path']}/zaproxy.tar.gz"
 
 remote_file download_tar_path do
-  source "https://github.com/zaproxy/zaproxy/releases/download/2.4.3/ZAP_2.4.3_Linux.tar.gz"
+  source "https://github.com/zaproxy/zaproxy/releases/download/2.6.0/ZAP_2.6.0_Linux.tar.gz"
 end
 
 execute 'untar ZAP' do
